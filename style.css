@@ -1,0 +1,1327 @@
+/* ============================================================
+   DISCOVER NAKURU | style.css
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    color: #26372f;
+    background: #f5f7f5;
+    overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: #1e4d3a;
+}
+
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+
+.topbar {
+    height: 76px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 0 26px;
+
+    background: #1e4d3a;
+    color: white;
+
+    position: relative;
+    z-index: 2000;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.brand h1 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+.brand p {
+    margin: 3px 0 0;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.search-container {
+    width: 310px;
+    flex-shrink: 0;
+
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 13px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #718078;
+
+    font-size: 19px;
+
+    pointer-events: none;
+}
+
+.search-container input {
+    width: 100%;
+
+    padding: 11px 14px 11px 38px;
+
+    border: none;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: white;
+
+    color: #26372f;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.search-container input::placeholder {
+    color: #8a958f;
+}
+
+.search-container input:focus {
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.2),
+        0 3px 10px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+.main-container {
+    width: 100%;
+    height: calc(100vh - 76px);
+
+    display: flex;
+
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+    width: 315px;
+    min-width: 315px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px 18px;
+
+    background: white;
+
+    border-right: 1px solid #dfe6e1;
+
+    overflow-y: auto;
+
+    position: relative;
+    z-index: 1000;
+}
+
+.sidebar-section {
+    width: 100%;
+}
+
+.sidebar-section h2 {
+    margin: 0 0 16px;
+
+    color: #1e4d3a;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   CATEGORY BUTTONS
+   ============================================================ */
+
+.category-button {
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 7px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 9px;
+
+    background: white;
+
+    color: #46564e;
+
+    text-align: left;
+
+    font-size: 12.5px;
+    font-weight: 550;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.category-button:hover {
+    background: #f1f6f3;
+
+    border-color: #cbd9d1;
+
+    color: #1e4d3a;
+
+    transform: translateX(2px);
+}
+
+.category-button.active {
+    background: #1e4d3a;
+
+    border-color: #1e4d3a;
+
+    color: white;
+
+    box-shadow:
+        0 3px 8px rgba(30, 77, 58, 0.14);
+}
+
+.category-icon {
+    width: 25px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 16px;
+}
+
+
+/* ============================================================
+   SIDEBAR ACTIONS
+   ============================================================ */
+
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+.add-place-button {
+    width: 100%;
+
+    min-height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 11px 14px;
+
+    border: 1px solid #1e4d3a;
+    border-radius: 9px;
+
+    background: #1e4d3a;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.add-place-button:hover {
+    background: #163c2d;
+
+    box-shadow:
+        0 4px 12px rgba(30, 77, 58, 0.2);
+}
+
+.add-place-button:active {
+    transform: translateY(1px);
+}
+
+.add-place-button span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+/* ============================================================
+   SECONDARY BUTTONS
+   ============================================================ */
+
+.secondary-button {
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #d5ded8;
+    border-radius: 8px;
+
+    background: #f7f9f8;
+
+    color: #4d5d55;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: #edf3ef;
+
+    border-color: #bfcfc5;
+
+    color: #1e4d3a;
+}
+
+.danger-button:hover {
+    background: #fff3f0;
+
+    border-color: #e5bcb2;
+
+    color: #9a4937;
+}
+
+
+/* ============================================================
+   SIDEBAR INFORMATION
+   ============================================================ */
+
+.sidebar-info {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: #f3f7f4;
+
+    border: 1px solid #e2ebe5;
+}
+
+.info-number {
+    min-width: 45px;
+
+    color: #1e4d3a;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+.sidebar-info strong {
+    display: block;
+
+    color: #34443c;
+
+    font-size: 12px;
+}
+
+.sidebar-info p {
+    margin: 3px 0 0;
+
+    color: #7b8780;
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   LOADING / STATUS
+   ============================================================ */
+
+.loading-message {
+    margin-top: 12px;
+
+    padding: 9px 10px;
+
+    border-radius: 7px;
+
+    background: #f7f9f8;
+
+    color: #758179;
+
+    font-size: 10.5px;
+
+    line-height: 1.4;
+}
+
+.loading-message.success {
+    background: #edf6f0;
+    color: #35664c;
+}
+
+.loading-message.error {
+    background: #fff2ef;
+    color: #a34b38;
+}
+
+
+/* ============================================================
+   SIDEBAR FOOTER
+   ============================================================ */
+
+.sidebar-footer {
+    margin-top: auto;
+
+    padding-top: 18px;
+}
+
+.sidebar-footer p {
+    margin: 3px 0;
+
+    color: #9aa49e;
+
+    font-size: 9.5px;
+}
+
+
+/* ============================================================
+   MAP CONTAINER
+   ============================================================ */
+
+.map-container {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 0;
+    height: 100%;
+
+    background: #dce6df;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ============================================================
+   MAP OVERLAY TITLE
+   ============================================================ */
+
+.map-overlay {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 1000;
+
+    padding: 11px 15px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(30, 77, 58, 0.12);
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.12);
+
+    pointer-events: none;
+}
+
+.map-title {
+    color: #1e4d3a;
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.map-subtitle {
+    margin-top: 2px;
+
+    color: #78847d;
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   MAP INSTRUCTION
+   ============================================================ */
+
+.map-instruction {
+    position: absolute;
+
+    top: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 1500;
+
+    padding: 10px 14px;
+
+    background: #1e4d3a;
+
+    color: white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.2);
+
+    font-size: 12px;
+    font-weight: 550;
+
+    white-space: nowrap;
+}
+
+.map-instruction button {
+    margin-left: 10px;
+
+    padding: 4px 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    font-size: 11px;
+}
+
+.map-instruction button:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+
+.legend {
+    position: absolute;
+
+    right: 18px;
+    bottom: 24px;
+
+    z-index: 1000;
+
+    min-width: 145px;
+
+    padding: 13px 14px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(30, 77, 58, 0.12);
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.legend strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #1e4d3a;
+
+    font-size: 11px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 5px 0;
+
+    color: #5e6b64;
+
+    font-size: 10px;
+}
+
+.legend-item span {
+    width: 18px;
+
+    display: inline-flex;
+    justify-content: center;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   CUSTOM MAP MARKERS
+   ============================================================ */
+
+.custom-category-marker {
+    background: transparent;
+
+    border: none;
+}
+
+.category-marker {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 2px solid #1e4d3a;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.25);
+
+    font-size: 19px;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.category-marker:hover {
+    transform: scale(1.1);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ============================================================
+   USER-ADDED MARKER
+   ============================================================ */
+
+.user-place-marker {
+    border-color: #b7791f;
+}
+
+
+/* ============================================================
+   POPUPS
+   ============================================================ */
+
+.leaflet-popup-content-wrapper {
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+}
+
+.leaflet-popup-content {
+    width: 310px !important;
+
+    max-width: 310px;
+
+    margin: 0;
+}
+
+.popup-image {
+    display: block;
+
+    width: 100%;
+    height: 170px;
+
+    object-fit: cover;
+
+    background: #eef2ef;
+}
+
+.popup-content {
+    padding: 15px;
+}
+
+.popup-category {
+    margin-bottom: 5px;
+
+    color: #1e4d3a;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+.popup-content h3 {
+    margin: 0 0 9px;
+
+    color: #1e4d3a;
+
+    font-size: 18px;
+    font-weight: 750;
+
+    line-height: 1.3;
+}
+
+.popup-content p {
+    margin: 7px 0;
+
+    color: #5d6a63;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.popup-content strong {
+    color: #34443c;
+}
+
+.popup-content a {
+    color: #1e4d3a;
+
+    font-weight: 650;
+
+    text-decoration: none;
+}
+
+.popup-content a:hover {
+    text-decoration: underline;
+}
+
+.popup-content small {
+    display: block;
+
+    margin-top: 12px;
+    padding-top: 9px;
+
+    border-top: 1px solid #e4eae6;
+
+    color: #909a94;
+
+    font-size: 9.5px;
+}
+
+
+/* ============================================================
+   ADD PLACE MODAL
+   ============================================================ */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(13, 31, 24, 0.58);
+
+    backdrop-filter: blur(3px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+
+/* ============================================================
+   MODAL CONTENT
+   ============================================================ */
+
+.modal-content {
+    width: min(650px, 100%);
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 65px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.modal-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 21px 24px;
+
+    border-bottom: 1px solid #e3e9e5;
+}
+
+.modal-header h2 {
+    margin: 0;
+
+    color: #1e4d3a;
+
+    font-size: 21px;
+}
+
+.modal-header p {
+    margin: 5px 0 0;
+
+    color: #77837c;
+
+    font-size: 11px;
+}
+
+.close-modal {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f0f3f1;
+
+    color: #59665f;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.close-modal:hover {
+    background: #e4eae6;
+
+    color: #1e4d3a;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+#placeForm {
+    padding: 21px 24px 24px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #3c4b44;
+
+    font-size: 11.5px;
+    font-weight: 650;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 10px 11px;
+
+    border: 1px solid #d4ddd8;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fafcfb;
+
+    color: #26372f;
+
+    font-size: 12px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #1e4d3a;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(30, 77, 58, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 95px;
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8a958f;
+
+    font-size: 9.5px;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   FORM ROW
+   ============================================================ */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ============================================================
+   PHOTO PREVIEW
+   ============================================================ */
+
+.photo-preview-container {
+    margin: -2px 0 15px;
+}
+
+.photo-preview-container img {
+    display: block;
+
+    width: 100%;
+    max-height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 9px;
+
+    border: 1px solid #dce4df;
+}
+
+
+/* ============================================================
+   COORDINATE BOX
+   ============================================================ */
+
+.coordinate-box {
+    margin: 17px 0;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    background: #f3f7f4;
+
+    border: 1px solid #dce7df;
+}
+
+.coordinate-box strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1e4d3a;
+
+    font-size: 11px;
+}
+
+#selectedCoordinates {
+    color: #68756e;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   FORM ACTIONS
+   ============================================================ */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid #e5ebe7;
+}
+
+.secondary-form-button,
+.submit-button {
+    min-width: 105px;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.secondary-form-button {
+    border: 1px solid #d5ddd8;
+
+    background: white;
+
+    color: #59665f;
+}
+
+.secondary-form-button:hover {
+    background: #f3f5f4;
+}
+
+.submit-button {
+    border: 1px solid #1e4d3a;
+
+    background: #1e4d3a;
+
+    color: white;
+}
+
+.submit-button:hover {
+    background: #163c2d;
+}
+
+
+/* ============================================================
+   LEAFLET
+   ============================================================ */
+
+.leaflet-control-zoom a {
+    color: #1e4d3a !important;
+}
+
+.leaflet-control-attribution {
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   SCROLLBARS
+   ============================================================ */
+
+.sidebar::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.modal-content::-webkit-scrollbar-track {
+    background: #f3f5f4;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.modal-content::-webkit-scrollbar-thumb {
+    background: #c6d0ca;
+
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #aebbb3;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+    }
+
+    .search-container {
+        width: 260px;
+    }
+
+    .brand p {
+        display: none;
+    }
+
+    .leaflet-popup-content {
+        width: 280px !important;
+        max-width: 280px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .topbar {
+        height: auto;
+        min-height: 76px;
+
+        padding: 12px 15px;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .main-container {
+        height: auto;
+        min-height: calc(100vh - 76px);
+
+        flex-direction: column;
+
+        overflow: visible;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+
+        height: auto;
+        max-height: 50vh;
+
+        border-right: none;
+        border-bottom: 1px solid #dfe6e1;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 55vh;
+        min-height: 420px;
+    }
+
+    .legend {
+        right: 10px;
+        bottom: 15px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .brand h1 {
+        font-size: 16px;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .sidebar {
+        padding: 18px 14px;
+    }
+
+    .map-overlay {
+        top: 10px;
+        left: 10px;
+    }
+
+    .legend {
+        display: none;
+    }
+
+    .map-instruction {
+        width: calc(100% - 30px);
+
+        white-space: normal;
+
+        text-align: center;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    #placeForm {
+        padding: 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .secondary-form-button,
+    .submit-button {
+        width: 100%;
+    }
+
+}

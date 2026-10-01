@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Discover Nakuru | Interactive Map</title>
+
+
+    <!-- =========================================
+         LEAFLET CSS
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        crossorigin=""
+    >
+
+
+    <!-- =========================================
+         GOOGLE FONT
+    ========================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================
+         CUSTOM CSS
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="topbar">
+
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                N
+            </div>
+
+
+            <div>
+
+                <h1>
+                    DISCOVER NAKURU
+                </h1>
+
+                <p>
+                    Explore the places, landscapes and stories of Nakuru County
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-container">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search places..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-container">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+
+            <div class="sidebar-section">
+
+
+                <h2>
+                    Explore
+                </h2>
+
+
+                <!-- ALL -->
+
+                <button
+                    class="category-button active"
+                    data-category="All"
+                >
+
+                    <span class="category-icon">
+                        ◉
+                    </span>
+
+                    All Places
+
+                </button>
+
+
+                <!-- NATURE -->
+
+                <button
+                    class="category-button"
+                    data-category="Nature & Wildlife"
+                >
+
+                    <span class="category-icon">
+                        🌿
+                    </span>
+
+                    Nature & Wildlife
+
+                </button>
+
+
+                <!-- HERITAGE -->
+
+                <button
+                    class="category-button"
+                    data-category="History & Heritage"
+                >
+
+                    <span class="category-icon">
+                        🏛
+                    </span>
+
+                    History & Heritage
+
+                </button>
+
+
+                <!-- GEOLOGY -->
+
+                <button
+                    class="category-button"
+                    data-category="Geology & Landscape"
+                >
+
+                    <span class="category-icon">
+                        🌋
+                    </span>
+
+                    Geology & Landscape
+
+                </button>
+
+
+                <!-- CULTURE -->
+
+                <button
+                    class="category-button"
+                    data-category="Culture"
+                >
+
+                    <span class="category-icon">
+                        🎭
+                    </span>
+
+                    Culture
+
+                </button>
+
+
+                <!-- RECREATION -->
+
+                <button
+                    class="category-button"
+                    data-category="Recreation"
+                >
+
+                    <span class="category-icon">
+                        ⚽
+                    </span>
+
+                    Recreation
+
+                </button>
+
+
+                <!-- SCENIC -->
+
+                <button
+                    class="category-button"
+                    data-category="Scenic Places"
+                >
+
+                    <span class="category-icon">
+                        📸
+                    </span>
+
+                    Scenic Places
+
+                </button>
+
+
+                <!-- ACCOMMODATION -->
+
+                <button
+                    class="category-button"
+                    data-category="Accommodation"
+                >
+
+                    <span class="category-icon">
+                        🏨
+                    </span>
+
+                    Accommodation
+
+                </button>
+
+
+                <!-- FOOD -->
+
+                <button
+                    class="category-button"
+                    data-category="Restaurants & Food"
+                >
+
+                    <span class="category-icon">
+                        🍴
+                    </span>
+
+                    Restaurants & Food
+
+                </button>
+
+
+                <!-- SHOPPING -->
+
+                <button
+                    class="category-button"
+                    data-category="Shopping"
+                >
+
+                    <span class="category-icon">
+                        🛍
+                    </span>
+
+                    Shopping
+
+                </button>
+
+
+                <!-- WORSHIP -->
+
+                <button
+                    class="category-button"
+                    data-category="Places of Worship"
+                >
+
+                    <span class="category-icon">
+                        ⛪
+                    </span>
+
+                    Places of Worship
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =================================
+                 ADD PLACE
+            ================================== -->
+
+            <div class="sidebar-actions">
+
+
+                <button
+                    id="addPlaceButton"
+                    class="add-place-button"
+                >
+
+                    <span>
+                        ＋
+                    </span>
+
+                    Add a Place
+
+                </button>
+
+
+                <button
+                    id="exportButton"
+                    class="secondary-button"
+                >
+
+                    ⇩ Export My Places
+
+                </button>
+
+
+                <button
+                    id="clearPlacesButton"
+                    class="secondary-button danger-button"
+                >
+
+                    Clear My Places
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =================================
+                 INFORMATION
+            ================================== -->
+
+            <div class="sidebar-info">
+
+
+                <div
+                    class="info-number"
+                    id="placeCount"
+                >
+                    0
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Places to explore
+                    </strong>
+
+                    <p>
+                        Nakuru County
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================
+                 STATUS
+            ================================== -->
+
+            <div
+                class="loading-message"
+                id="loadingMessage"
+            >
+                Loading map data...
+            </div>
+
+
+            <!-- =================================
+                 FOOTER
+            ================================== -->
+
+            <div class="sidebar-footer">
+
+                <p>
+                    GIS Portfolio Project
+                </p>
+
+                <p>
+                    © 2026 Discover Nakuru
+                </p>
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =====================================
+             MAP
+        ====================================== -->
+
+        <section class="map-container">
+
+
+            <div id="map"></div>
+
+
+            <!-- MAP TITLE -->
+
+            <div class="map-overlay">
+
+                <div class="map-title">
+                    Nakuru County
+                </div>
+
+                <div class="map-subtitle">
+                    Kenya
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ADD PLACE INSTRUCTION
+            ================================== -->
+
+            <div
+                id="mapInstruction"
+                class="map-instruction hidden"
+            >
+
+                Click anywhere inside Nakuru County
+                to select a location.
+
+                <button
+                    id="cancelAddButton"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 LEGEND
+            ================================== -->
+
+            <div class="legend">
+
+
+                <strong>
+                    Map symbols
+                </strong>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        🌿
+                    </span>
+
+                    Nature
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        🏛
+                    </span>
+
+                    Heritage
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        🌋
+                    </span>
+
+                    Geology
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        🏨
+                    </span>
+
+                    Accommodation
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        🍴
+                    </span>
+
+                    Restaurants
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        ⛪
+                    </span>
+
+                    Worship
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>
+                        📸
+                    </span>
+
+                    Scenic
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         ADD PLACE MODAL
+    ========================================== -->
+
+    <div
+        id="addPlaceModal"
+        class="modal hidden"
+    >
+
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Add a New Place
+                    </h2>
+
+                    <p>
+                        Add a place within Nakuru County
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="closeModalButton"
+                    class="close-modal"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="placeForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="placeName">
+                        Place name *
+                    </label>
+
+                    <input
+                        id="placeName"
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="e.g. Lake Naivasha Viewpoint"
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="placeCategory">
+                        Category *
+                    </label>
+
+                    <select
+                        id="placeCategory"
+                        name="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Nature & Wildlife">
+                            🌿 Nature & Wildlife
+                        </option>
+
+                        <option value="History & Heritage">
+                            🏛 History & Heritage
+                        </option>
+
+                        <option value="Geology & Landscape">
+                            🌋 Geology & Landscape
+                        </option>
+
+                        <option value="Culture">
+                            🎭 Culture
+                        </option>
+
+                        <option value="Recreation">
+                            ⚽ Recreation
+                        </option>
+
+                        <option value="Scenic Places">
+                            📸 Scenic Places
+                        </option>
+
+                        <option value="Accommodation">
+                            🏨 Accommodation
+                        </option>
+
+                        <option value="Restaurants & Food">
+                            🍴 Restaurants & Food
+                        </option>
+
+                        <option value="Shopping">
+                            🛍 Shopping
+                        </option>
+
+                        <option value="Places of Worship">
+                            ⛪ Places of Worship
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="placeDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="placeDescription"
+                        name="description"
+                        rows="4"
+                        placeholder="Tell visitors something useful about this place..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="placeAddress">
+                        Address / Location
+                    </label>
+
+                    <input
+                        id="placeAddress"
+                        name="address"
+                        type="text"
+                        placeholder="e.g. Bahati, Nakuru County"
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="placePhone">
+                            Phone
+                        </label>
+
+                        <input
+                            id="placePhone"
+                            name="phone"
+                            type="tel"
+                            placeholder="+254..."
+                        >
+
+                    </div>
+
+
+                    <!-- WEBSITE -->
+
+                    <div class="form-group">
+
+                        <label for="placeWebsite">
+                            Website
+                        </label>
+
+                        <input
+                            id="placeWebsite"
+                            name="website"
+                            type="url"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPENING HOURS -->
+
+                <div class="form-group">
+
+                    <label for="placeHours">
+                        Opening hours
+                    </label>
+
+                    <input
+                        id="placeHours"
+                        name="opening_hours"
+                        type="text"
+                        placeholder="e.g. Mon–Sun 08:00–18:00"
+                    >
+
+                </div>
+
+
+                <!-- PHOTO -->
+
+                <div class="form-group">
+
+                    <label for="placePhoto">
+                        Photograph
+                    </label>
+
+                    <input
+                        id="placePhoto"
+                        name="photo"
+                        type="file"
+                        accept="image/*"
+                    >
+
+                    <small>
+                        The photograph is kept locally in this browser.
+                    </small>
+
+                </div>
+
+
+                <!-- PHOTO PREVIEW -->
+
+                <div
+                    id="photoPreviewContainer"
+                    class="photo-preview-container hidden"
+                >
+
+                    <img
+                        id="photoPreview"
+                        src=""
+                        alt="Photo preview"
+                    >
+
+                </div>
+
+
+                <!-- COORDINATES -->
+
+                <div class="coordinate-box">
+
+                    <strong>
+                        Selected location
+                    </strong>
+
+                    <div id="selectedCoordinates">
+                        Click the map to choose a location.
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelFormButton"
+                        class="secondary-form-button"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Add Place
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         LEAFLET
+    ========================================== -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        crossorigin=""
+    ></script>
+
+
+    <!-- =========================================
+         APPLICATION
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
+```

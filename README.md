@@ -8,6 +8,7 @@ Discover Nakuru was developed as a GIS portfolio project to make Nakuru's places
 
 ## Methods & Techniques
 
+* **Web Scraping** - collecting publicly available place information from relevant tourism and destination websites using Python.
 * **GIS & Spatial Analysis** - mapping and spatial filtering of places within Nakuru County.
 * **OpenStreetMap & Overpass API** - free discovery of geographic features and place information.
 * **County Boundary Clipping** - restricting mapped features to the Nakuru County boundary.
